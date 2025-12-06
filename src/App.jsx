@@ -1,23 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+// import Button from './components/Button.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+    // function logClick(title) {
+    //     console.log(title);
+    // }
 
   return (
     <>
         <nav>
             <ul>
-                <li><a href={"/"}>About</a></li>
+                <li><a href={"/"}>Shop</a></li>
+                <li><a href={"/"}>Ons verhaal</a></li>
                 <li><a href={"/"}>Blog</a></li>
             </ul>
+            {/*<ShoppingCart className="shopping-cart-icon" />*/}
         </nav>
         <header>
             <h1>National Park Service</h1>
-            <button type="button" onClick={logClick}>Login</button>
+            <button type="button">Shop nu</button>
         </header>
+<main>
+    Test
+</main>
+
+
     </>
   )
 }
