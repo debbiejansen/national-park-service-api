@@ -1,16 +1,14 @@
 import './Button.css'
-function Button(props) {
-    function handleClick() {
-        if (!props.disabled) {
-            props.onClick(props.title);
-        }
-    }
+
+function Button({ label, type, disabled }) {
+
     return (
         <button
-            type="button"
-            onClick={handleClick}
+            type={type}
+            disabled={disabled}
+            // onClick={handleClick}
         >
-            {props.title}
+            {label}
         </button>
     );
 }

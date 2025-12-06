@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-// import Button from './components/Button.jsx';
+import Button from './components/Button.jsx';
 
 function App() {
-    // function logClick(title) {
-    //     console.log(title);
-    // }
 
   return (
     <>
@@ -15,14 +12,23 @@ function App() {
                 <li><a href={"/"}>Ons verhaal</a></li>
                 <li><a href={"/"}>Blog</a></li>
             </ul>
-            {/*<ShoppingCart className="shopping-cart-icon" />*/}
+            <Button
+                label="testtesttest"
+                type="button"
+                disabled={false}
+                // handleClick={logClick}
+            />
         </nav>
         <header>
             <h1>National Park Service</h1>
-            <button type="button">Shop nu</button>
         </header>
 <main>
-    Test
+    <Button
+    label="testtesttest"
+    type="button"
+    disabled={false}
+    // handleClick={logClick}
+    />
 </main>
 
 
