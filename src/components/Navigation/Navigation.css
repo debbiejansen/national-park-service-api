@@ -1,11 +1,18 @@
+/*!*<--------------->  2.1 Navbar   <--------------->*!*/
+
 .navigation-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 24px;
-    background-color: var(--main-black);
+    background-color: rgba(0, 0, 0, 0.5);
     color: var(--main-white);
-    border-bottom: 1px solid #ddd;
+    z-index: 1000;
 }
 
 .navigation-logo {
@@ -13,10 +20,17 @@
     align-items: center;
 }
 
-.logo-image {
-    height: 40px;
-    width: auto;
+.logo-as-text {
+    text-decoration: none;
+    color: var(--main-white);
+    font-weight: bolder;
+    font-size: 1.5rem;
 }
+
+/*.logo-image {*/
+/*    height: 80px;*/
+/*    width: auto;*/
+/*}*/
 
 .navigation-links {
     display: flex;
@@ -27,10 +41,10 @@
 }
 
 .active-menu-link {
-    border-bottom: 1px solid var(--main-green);
+    border-bottom: 0.5px solid var(--main-white);
     text-decoration: none;
     font-weight: bolder;
-    color: var(--main-green);
+    color: var(--main-white);
 }
 
 .default-menu-link {
@@ -39,4 +53,22 @@
     font-weight: bolder;
     list-style: none;
     color: white;
+}
+
+
+/*!*<--------------->  2.2 Header   <--------------->*!*/
+
+
+.header-img {
+    width: 100%;
+    height: 40vh;
+
+    background: url('../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg') no-repeat center bottom fixed;
+    background-size: cover;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--main-white);
 }
