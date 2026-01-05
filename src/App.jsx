@@ -1,38 +1,22 @@
-import { useState } from 'react'
 import './App.css'
-import Button from './components/Button.jsx';
-
+import {Route, Routes} from 'react-router-dom';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
 function App() {
 
   return (
-    <>
-        <nav>
-            <ul>
-                <li><a href={"/"}>Shop</a></li>
-                <li><a href={"/"}>Ons verhaal</a></li>
-                <li><a href={"/"}>Blog</a></li>
-            </ul>
-            <Button
-                label="testtesttest"
-                type="button"
-                disabled={false}
-                // handleClick={logClick}
-            />
-        </nav>
-        <header>
-            <h1>National Park Service</h1>
-        </header>
-<main>
-    <Button
-    label="testtesttest"
-    type="button"
-    disabled={false}
-    // handleClick={logClick}
-    />
-</main>
-
-
-    </>
+      <>
+          <Navigation />
+          <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/about" element={<About/>} />
+              <Route path="/explore" element={<Explore/>} />
+              <Route path="/favorites" element={<Favorites/>} />
+              <Route path="/visited" element={<Visited/>} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/posts/:id" element={<Blogpost/>} />
+          </Routes>
+      </>
   )
 }
 
