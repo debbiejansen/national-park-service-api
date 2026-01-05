@@ -3,7 +3,8 @@ button {
     border: 1px solid transparent;
     color: white;
     background-color: #007553;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bolder;
     padding: 8px 24px;
     text-transform: lowercase;
     cursor: pointer;

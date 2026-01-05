@@ -1,6 +1,7 @@
 import './Navigation.css';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import Button from "../Button/Button.jsx";
 
 function Navigation() {
     return (
@@ -30,9 +31,15 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
-                            to="/profile">
-                            Login
+                            to="/explore">
+                            Explore
                         </NavLink>
+                    </li>
+                    <li>
+                        <Button
+                        label="login"
+                        disabled="false"
+                        />
                     </li>
                 </ul>
             </nav>

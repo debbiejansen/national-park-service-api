@@ -28,6 +28,14 @@ main {
 
 
 /* <-------------------->  2. Areas <--------------------> */
+
+.outer-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 24px 48px;
+}
+
 /*<--------------->  2.1 Navigation   <--------------->*/
 
 /*<--------------->  2.3 Products   <--------------->*/

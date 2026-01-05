@@ -1,15 +1,16 @@
 import './Home.css'
 import React from 'react';
+import Button from "../../components/Button/Button.jsx";
 
 function Home() {
     return (
-
-        <div>
-            <div>One</div>
-            <div>Two</div>
-        </div>
-
-
+            <div className="outer-container">
+                <Button/>
+                <h1>Test Homepage</h1>
+                <p>test test</p>
+                <p>test test</p>
+                <p>test test</p>
+            </div>
     );
 }
 
