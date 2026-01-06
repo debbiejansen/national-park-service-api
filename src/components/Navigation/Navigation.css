@@ -34,21 +34,6 @@
     align-items: center;
 }
 
-.active-menu-link {
-    border-bottom: 0.5px solid var(--main-white);
-    text-decoration: none;
-    font-weight: bolder;
-    color: var(--main-white);
-}
-
-.default-menu-link {
-    border-bottom: 1px solid transparent;
-    text-decoration: none;
-    font-weight: bolder;
-    list-style: none;
-    color: var(--main-white);
-}
-
 
 /*!*<--------------->  2.2 Header   <--------------->*!*/
 
