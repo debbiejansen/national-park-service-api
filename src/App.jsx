@@ -1,6 +1,7 @@
 import './App.css'
 import {Route, Routes} from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation.jsx';
+import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Explore from './pages/Explore/Explore';
@@ -24,6 +25,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
               {/*<Route path="/posts/:id" element={<Blogpost/>} />*/}
           </Routes>
+          <Footer />
       </>
   );
 }
