@@ -11,6 +11,12 @@
     background-color: var(--main-white);
 }
 
+.footer-logo-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 /*!*<--------------->  1.1 Logo   <--------------->*!*/
 
 .footer-logo {

@@ -7,6 +7,7 @@ function Footer() {
     return (
 
         <footer className="outer-container-footer">
+<div className="footer-logo-links">
             <div>
                 <img src={logo}
                      alt="Company logo"
@@ -15,7 +16,14 @@ function Footer() {
 
             <ul className="footer-links">
                 <li>
-                <h3>Quick Acces</h3>
+                <h3>Quick Access</h3>
+                </li>
+                <li>
+                    <NavLink
+                        className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
+                        to="/contact">
+                        Contact
+                    </NavLink>
                 </li>
                 <li>
                     <NavLink
@@ -24,9 +32,15 @@ function Footer() {
                         About
                     </NavLink>
                 </li>
-
+                <li>
+                    <NavLink
+                        className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
+                        to="/faq">
+                        FAQ
+                    </NavLink>
+                </li>
             </ul>
-
+</div>
             <div className="footer-quote">
                 <h3>National Park Service</h3>
                 <p>The national park community welcomes you! Together we can celebrate these special places and ensure
