@@ -1,7 +1,7 @@
-import './TinyTile.css';
+import './SmallTile.css';
 import React from 'react';
 
-function TinyTile(props) {
+function SmallTile(props) {
     return (
         <article className="article-outer-container">
             <span>{props.label}</span>
@@ -14,18 +14,4 @@ function TinyTile(props) {
         </article>
     );
 }
-export default TinyTile;
-
-
-
-
-
-// return (
-//     <article>
-//         <span>{props.label}</span>
-//         <img src={props.image} alt={props.title}/>
-//         <h4>{props.title}</h4>
-//         <p>{props.price}</p>
-//     </article>
-// );
-// }
+export default SmallTile;

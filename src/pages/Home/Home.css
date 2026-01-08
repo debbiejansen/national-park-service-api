@@ -1,0 +1,7 @@
+.small-tiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 24px 0;
+    justify-content: center;
+}
