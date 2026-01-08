@@ -11,7 +11,7 @@
     background-color: white;
 }
 
-.footer-logo-links {
+.inner-container-footer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -21,13 +21,14 @@
 
 .footer-logo {
     display: flex;
-    width: 250px;
+    width: 200px;
 }
 
 /*!*<--------------->  1.2 Links   <--------------->*!*/
 
 .footer-links {
     text-decoration: none;
+    font-weight: lighter;
     list-style: none;
     color: var(--main-black);
 }

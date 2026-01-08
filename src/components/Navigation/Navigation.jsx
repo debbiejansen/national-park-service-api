@@ -2,7 +2,7 @@ import './Navigation.css';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Button from '../Button/Button.jsx';
-import logo from "../../assets/National-Park-Service-Logo-1968.png";
+import logo from '../../assets/National-Park-Service-Logo-1968.png';
 
 function Navigation() {
     return (
