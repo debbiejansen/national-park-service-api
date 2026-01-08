@@ -2,12 +2,16 @@ import './Navigation.css';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Button from '../Button/Button.jsx';
+import logo from "../../assets/National-Park-Service-Logo-1968.png";
 
 function Navigation() {
     return (
         <header className="header-img">
             <nav className="navigation-bar">
                 <div className="navigation-logo">
+                    <img src={logo}
+                         alt="Company logo"
+                         className="navbar-logo"/>
                     <NavLink to="/" className="logo-as-text">
                         National Park Service
                     </NavLink>
