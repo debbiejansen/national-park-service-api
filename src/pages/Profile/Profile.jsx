@@ -11,6 +11,7 @@ function Profile() {
             <div className="outer-container">
             <h1>Test Profile page</h1>
             <p>hier komt content over jezelf</p>
+                <h1>Favorites</h1>
                 <section className="small-tiles-container">
                     <SmallTile
                         image={img}
@@ -31,7 +32,7 @@ function Profile() {
                         label="Beautiful Scenery"
                     />
                 </section>
-
+                    <h1>Visited</h1>
                 <div className="big-tiles-container">
                     <BigTile
                         title="The park"
@@ -48,8 +49,6 @@ function Profile() {
                         to="/about"
                     />
                 </div>
-
-
             </div>
         </>
     );
