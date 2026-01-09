@@ -8,7 +8,7 @@ function SmallTile(props) {
             <div className="article-image">
             <img src={props.image} alt={props.title}/></div>
             <div className="article-text">
-            <h4>{props.title}</h4>
+            <h2>{props.title}</h2>
             <p>{props.subtitle}</p>
             </div>
         </article>

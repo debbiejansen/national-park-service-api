@@ -3,6 +3,8 @@ import React from 'react';
 import WideButton from '../../components/WideButton/WideButton.jsx';
 import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import img from '../../assets/National-Park-Service-Logo-1968.png';
+import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
+import BigTile from '../../components/BigTile/BigTile.jsx';
 
 function Home() {
     return (
@@ -32,26 +34,24 @@ function Home() {
                     />
                 </section>
 
-                <section className="big-tiles-container">
-                    <SmallTile
-                        image={img}
-                        title="Naam van park"
+                <div className="big-tiles-container">
+                    <BigTile
+                        title="The park"
                         subtitle="Info over park"
-                        label="Popular"
-                    />
-                    <SmallTile
-                        image={img}
-                        title="Naam van park"
+                        image={parkimg}
+                        imagePosition="right"
+                        to="/about"
+                        />
+                    <BigTile
+                        title="The park"
                         subtitle="Info over park"
-                        label="Local Wildlife"
+                        image={parkimg}
+                        imagePosition="left"
+                        to="/about"
                     />
-                    <SmallTile
-                        image={img}
-                        title="Naam van park"
-                        subtitle="Info over park"
-                        label="Beautiful Scenery"
-                    />
-                </section>
+
+
+                </div>
             </div>
     );
 }
