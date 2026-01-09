@@ -7,7 +7,7 @@ function Footer() {
     return (
 
         <footer className="outer-container-footer">
-<div className="footer-logo-links">
+<div className="inner-container-footer">
             <div>
                 <img src={logo}
                      alt="Company logo"

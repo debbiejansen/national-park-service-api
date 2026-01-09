@@ -2,7 +2,7 @@ import './Navigation.css';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Button from '../Button/Button.jsx';
-import logo from "../../assets/National-Park-Service-Logo-1968.png";
+import logo from '../../assets/National-Park-Service-Logo-1968.png';
 
 function Navigation() {
     return (
@@ -28,8 +28,8 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
-                            to="/about">
-                            About
+                            to="/profile">
+                            About tijdelijk profile
                         </NavLink>
                     </li>
                     <li>
