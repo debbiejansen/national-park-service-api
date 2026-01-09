@@ -28,8 +28,8 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
-                            to="/about">
-                            About
+                            to="/profile">
+                            About tijdelijk profile
                         </NavLink>
                     </li>
                     <li>

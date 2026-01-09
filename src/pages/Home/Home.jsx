@@ -49,8 +49,6 @@ function Home() {
                         imagePosition="left"
                         to="/about"
                     />
-
-
                 </div>
             </div>
     );
