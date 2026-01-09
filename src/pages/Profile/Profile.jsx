@@ -6,7 +6,7 @@ function Profile() {
         <>
             <div className="outer-container">
             <h1>Test Profile page</h1>
-            <p>test test</p>
+            <p>hier komt content over jezelf</p>
             </div>
         </>
     );
