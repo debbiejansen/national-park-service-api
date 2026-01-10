@@ -5,11 +5,19 @@ import img from '../../assets/National-Park-Service-Logo-1968.png';
 import BigTile from '../../components/BigTile/BigTile.jsx';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import SubTitle from '../../components/SubTitle/SubTitle.jsx';
+import ParkDetails from '../ParkDetails/ParkDetails.jsx';
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 
 function Profile() {
     return (
         <>
             <div className="outer-container">
+
+                <ProfileInfo />
+
+
+
+
                 <div className="profile-container">
                     <div className="profile-picture">
                         hier komt een soort profielfoto
@@ -20,7 +28,7 @@ function Profile() {
                 </div>
 
                 <SubTitle
-                    subtitle="Favorites"
+                    subtitle="favorites"
                 />
 
                 <section className="small-tiles-container">
@@ -45,7 +53,7 @@ function Profile() {
                 </section>
 
                 <SubTitle
-                    subtitle="Visited"
+                    subtitle="visited"
                 />
 
                 <div className="big-tiles-container">
@@ -54,7 +62,7 @@ function Profile() {
                         discription="Info over park"
                         image={parkimg}
                         imagePosition="right"
-                        to="/about"
+                        to="/parkdetails"
                     />
                     <BigTile
                         title="The park"

@@ -1,7 +1,18 @@
 .subtitle-outer-container {
-        font-family: "Vujahday Script", cursive;
-        font-weight: 400;
-        font-size: 1.5rem;
-        color: #007553;
-        width: 500px;
+    font-family: "Permanent Marker", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    gap: 12px;
+}
+
+.subtitle-text {
+    white-space: nowrap;
+    margin: 0 16px;
+}
+
+.dotted-line {
+    height: 40px;
 }
