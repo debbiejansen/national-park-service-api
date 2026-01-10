@@ -17,19 +17,19 @@ function Home() {
                     <SmallTile
                         image={img}
                         title="Naam van park"
-                        subtitle="Info over park"
+                        discription="Info over park"
                         label="Popular"
                     />
                     <SmallTile
                         image={img}
                         title="Naam van park"
-                        subtitle="Info over park"
+                        discription="Info over park"
                         label="Local Wildlife"
                     />
                     <SmallTile
                         image={img}
                         title="Naam van park"
-                        subtitle="Info over park"
+                        discription="Info over park"
                         label="Beautiful Scenery"
                     />
                 </section>
@@ -37,14 +37,14 @@ function Home() {
                 <div className="big-tiles-container">
                     <BigTile
                         title="The park"
-                        subtitle="Info over park"
+                        discription="Info over park"
                         image={parkimg}
                         imagePosition="right"
                         to="/about"
                         />
                     <BigTile
                         title="The park"
-                        subtitle="Info over park"
+                        discription="Info over park"
                         image={parkimg}
                         imagePosition="left"
                         to="/about"
