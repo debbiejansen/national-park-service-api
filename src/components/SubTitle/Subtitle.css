@@ -1,0 +1,19 @@
+.subtitle-outer-container {
+    font-family: "Permanent Marker", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.subtitle-text {
+    white-space: nowrap;
+    margin: 0 16px;
+}
+
+.dotted-line {
+    height: 40px;
+}
