@@ -1,31 +1,25 @@
 import './Profile.css'
 import React from 'react';
 import SmallTile from '../../components/SmallTile/SmallTile.jsx';
-import img from '../../assets/National-Park-Service-Logo-1968.png';
 import BigTile from '../../components/BigTile/BigTile.jsx';
-import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import SubTitle from '../../components/SubTitle/SubTitle.jsx';
-import ParkDetails from '../ParkDetails/ParkDetails.jsx';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
+import img from '../../assets/National-Park-Service-Logo-1968.png';
+import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
+import profile from '../../assets/SS_profile-test.png';
+import ParkDetails from '../ParkDetails/ParkDetails.jsx';
+
 
 function Profile() {
     return (
         <>
             <div className="outer-container">
 
-                <ProfileInfo />
-
-
-
-
-                <div className="profile-container">
-                    <div className="profile-picture">
-                        hier komt een soort profielfoto
-                    </div>
-                    <div className="profile-text">
-                        <p>hier komt content over jezelf</p>
-                    </div>
-                </div>
+                <ProfileInfo
+                    title="Hello, it me"
+                    discription="Since 1916, the National Park Service has been entrusted with the care of our national parks. With the help of volunteers and partners, we safeguard these special places and share their stories with more than 318 million visitors every year. But our work doesn't stop there."
+                    image={profile}
+                />
 
                 <SubTitle
                     subtitle="favorites"
