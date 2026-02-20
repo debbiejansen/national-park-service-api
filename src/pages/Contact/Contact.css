@@ -1,0 +1,6 @@
+.page-container-contact {
+    display: flex;
+    background-color: var(--main-beige);
+    height: 100vh;
+
+}

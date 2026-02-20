@@ -1,13 +1,44 @@
 import './Contact.css'
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import InputComponent from '../../components/InputComponent/InputComponent';
 
 function Contact() {
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    function handleFormSubmit(data) {
+        console.log(data);
+    }
+
     return (
 
-        <main className="page-container-contact">
-            <h2>Oops... This page doesn't exist</h2>
-            <p>Contactpage </p>
-        </main>
+        <div className="page-container-contact">
+            <form onSubmit={handleSubmit(handleFormSubmit)}>
+                <InputComponent
+                    inputType="text"
+                    inputName="name"
+                    inputId="name-field"
+                    inputLabel="Naam:"
+                    validationRules={{
+                        required: {
+                            value: true,
+                            message: 'Naam is verplicht',
+                        }
+                    }}
+                    register={register}
+                    errors={errors}
+                />
+                <InputComponent
+                inputType="text"
+                inputName=""
+                />
+
+                <button type="submit">
+                    Versturen
+                </button>
+            </form>
+        </div>
 
     );
 }

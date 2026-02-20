@@ -39,11 +39,14 @@ function Navigation() {
                             Profile
                         </NavLink>
                     </li>
+
+
                     <li>
-                        <Button
-                        label="login"
-                        disabled="false"
-                        />
+                        <button
+                        type="button"
+                        // onClick={logout}
+                        > Log in
+                        </button>
                     </li>
                 </ul>
             </nav>
