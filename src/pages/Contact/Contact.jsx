@@ -2,14 +2,15 @@ import './Contact.css'
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import InputComponent from '../../components/InputComponent/InputComponent';
-import WideButton from "../../components/WideButton/WideButton.jsx";
+import WideButton from '../../components/WideButton/WideButton.jsx';
 
 function Contact() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     function handleFormSubmit(data) {
         console.log(data);
+        reset()
     }
 
     return (
