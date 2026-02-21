@@ -1,13 +1,13 @@
 import './WideButton.css'
 
-function WideButton({ label, type, disabled }) {
+function WideButton({ label, type = "button", disabled = false, ...rest }) {
 
     return (
         <button
             type={type}
             disabled={disabled}
-            // onClick={handleClick}
             className="wide-button"
+            {...rest}
         >
             {label}
         </button>

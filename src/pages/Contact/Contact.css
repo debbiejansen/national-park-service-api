@@ -1,0 +1,20 @@
+.page-container-contact {
+    width: 100%;
+    max-width: 600px;     /* keeps form contained */
+    margin: 0 auto;       /* centers it */
+    padding: 20px;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.page-container-contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.page-container-contact form button {
+    align-self: center;
+}
