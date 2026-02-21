@@ -1,19 +1,38 @@
 import './InputComponent.css';
 
-function InputComponent({ inputType, inputName, inputLabel, inputId, validationRules, register, errors }) {
+function InputComponent({
+                            inputType,
+                            inputName,
+                            inputLabel,
+                            inputId,
+                            validationRules,
+                            register,
+                            errors }) {
     return (
-        <>
-            <label htmlFor={inputId}>
+
+            <div className="input-wrapper">
+            <label htmlFor={inputId}></label>
+                {inputType === "textarea" ? (
+                <textarea
+                    id={inputId}
+                    rows={5}
+                    placeholder={inputLabel}
+                    {...register(inputName, validationRules)}
+                    />
+                ) : (
                 <input
                     type={inputType}
                     id={inputId}
                     placeholder={inputLabel}
                     {...register(inputName, validationRules)}
                 />
-            </label>
-            {errors[inputName] &&
-                <p className="error-message">{errors[inputName].message}</p>}
-        </>
+                )}
+
+            {errors[inputName] && (
+                <p className="error-message">{errors[inputName].message}
+            </p>
+            )}
+            </div>
     );
 }
 

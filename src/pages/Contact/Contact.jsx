@@ -63,7 +63,7 @@ function Contact() {
                 />
 
                 <InputComponent
-                    inputType="text"
+                    inputType="textarea"
                     inputName="message"
                     inputId="message-field"
                     inputLabel="Message:"

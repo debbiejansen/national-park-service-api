@@ -5,7 +5,6 @@ import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import img from '../../assets/National-Park-Service-Logo-1968.png';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import BigTile from '../../components/BigTile/BigTile.jsx';
-import SubTitle from "../../components/SubTitle/SubTitle.jsx";
 
 function Home() {
     return (
