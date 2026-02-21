@@ -14,3 +14,7 @@
     width: 100%;
     max-width: 500px;
 }
+
+.page-container-contact form button {
+    align-self: center;
+}

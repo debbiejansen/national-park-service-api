@@ -2,6 +2,7 @@ import './Contact.css'
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import InputComponent from '../../components/InputComponent/InputComponent';
+import WideButton from "../../components/WideButton/WideButton.jsx";
 
 function Contact() {
 
@@ -77,9 +78,12 @@ function Contact() {
                     errors={errors}
                 />
 
-                <button type="submit">
-                    Send
-                </button>
+                <WideButton
+                    type="submit"
+                    label="send"
+                    disabled={false}
+                    />
+
             </form>
             </section>
         </div>
