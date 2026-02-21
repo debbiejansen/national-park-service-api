@@ -51,7 +51,7 @@ function AuthContextProvider( { children } ) {
             user: null,
             status: 'done',
         });
-        console.log("Logout succesfull");
+        console.log("Logout successful");
         navigate('/');
     }
  // omdat we de functie in login- en het mounting effect gebruiken, staat hij hier

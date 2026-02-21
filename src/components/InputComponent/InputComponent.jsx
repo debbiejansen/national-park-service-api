@@ -4,14 +4,15 @@ function InputComponent({ inputType, inputName, inputLabel, inputId, validationR
     return (
         <>
             <label htmlFor={inputId}>
-                {inputLabel}
                 <input
                     type={inputType}
                     id={inputId}
+                    placeholder={inputLabel}
                     {...register(inputName, validationRules)}
                 />
             </label>
-            {errors[inputName] && <p>{errors[inputName].message}</p>}
+            {errors[inputName] &&
+                <p className="error-message">{errors[inputName].message}</p>}
         </>
     );
 }

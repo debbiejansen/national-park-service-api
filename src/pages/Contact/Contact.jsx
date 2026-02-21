@@ -13,31 +13,75 @@ function Contact() {
 
     return (
 
-        <div className="page-container-contact">
+        <div className="outer-container">
+            <h2>Contact</h2>
+            <section className="page-container-contact">
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <InputComponent
                     inputType="text"
-                    inputName="name"
-                    inputId="name-field"
-                    inputLabel="Naam:"
+                    inputName="first-name"
+                    inputId="first-name-field"
+                    inputLabel="First name:"
                     validationRules={{
                         required: {
                             value: true,
-                            message: 'Naam is verplicht',
+                            message: 'First name is required',
                         }
                     }}
                     register={register}
                     errors={errors}
                 />
+
+                <InputComponent
+                    inputType="text"
+                    inputName="last-name"
+                    inputId="last-name-field"
+                    inputLabel="Last name:"
+                    validationRules={{
+                        required: {
+                            value: true,
+                            message: 'Last name is required',
+                        }
+                    }}
+                    register={register}
+                    errors={errors}
+                />
+
                 <InputComponent
                 inputType="text"
-                inputName=""
+                inputName="email"
+                inputId="email-field"
+                inputLabel="Email:"
+                validationRules={{
+                    required: {
+                        value: true,
+                        message: 'Email is required',
+                    }
+                }}
+                register={register}
+                errors={errors}
+                />
+
+                <InputComponent
+                    inputType="text"
+                    inputName="message"
+                    inputId="message-field"
+                    inputLabel="Message:"
+                    validationRules={{
+                        required: {
+                            value: true,
+                            message: 'Message is required',
+                        }
+                    }}
+                    register={register}
+                    errors={errors}
                 />
 
                 <button type="submit">
-                    Versturen
+                    Send
                 </button>
             </form>
+            </section>
         </div>
 
     );

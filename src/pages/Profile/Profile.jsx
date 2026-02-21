@@ -2,12 +2,10 @@ import './Profile.css'
 import React from 'react';
 import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import BigTile from '../../components/BigTile/BigTile.jsx';
-import SubTitle from '../../components/SubTitle/SubTitle.jsx';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 import img from '../../assets/National-Park-Service-Logo-1968.png';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import profile from '../../assets/SS_profile-test.png';
-import ParkDetails from '../ParkDetails/ParkDetails.jsx';
 
 
 function Profile() {
@@ -21,9 +19,7 @@ function Profile() {
                     image={profile}
                 />
 
-                <SubTitle
-                    subtitle="favorites"
-                />
+                <h2>Favorites</h2>
 
                 <section className="small-tiles-container">
                     <SmallTile
@@ -46,9 +42,7 @@ function Profile() {
                     />
                 </section>
 
-                <SubTitle
-                    subtitle="visited"
-                />
+                <h2>Visited</h2>
 
                 <div className="big-tiles-container">
                     <BigTile

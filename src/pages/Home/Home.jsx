@@ -35,9 +35,7 @@ function Home() {
                     />
                 </section>
 
-                <SubTitle
-                    subtitle="blog"
-                />
+                <h2>Blog</h2>
 
                 <div className="big-tiles-container">
                     <BigTile
