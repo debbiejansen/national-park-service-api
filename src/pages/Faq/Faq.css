@@ -1,0 +1,15 @@
+.page-container-faq {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: auto;
+    background-color: white;
+    padding: 30px 90px;
+    border-radius: 10px;
+}
+
+.page-container-faq h2 {
+    align-self: center;
+    font-size: 24px;
+}

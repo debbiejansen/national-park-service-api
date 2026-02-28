@@ -17,7 +17,7 @@ function Login() {
 
         try {
             // Hier nog linken naar de Novi API voor inloggen - localhost klopt niet
-            const result = await axios.post('http://localhost:8080', {
+            const result = await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/login', {
                 email: email,
                 password: password,
                 });

@@ -3,12 +3,12 @@ import React from 'react';
 
 function Faq() {
     return (
-
-        <main className="page-container-not-found">
-            <h2>Oops... This page doesn't exist</h2>
+        <div className="outer-container">
+        <section className="page-container-faq">
+            <h2>Frequently Asked Questions</h2>
             <p>Contactpage </p>
-        </main>
-
+        </section>
+        </div>
     );
 }
 
