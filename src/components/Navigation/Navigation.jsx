@@ -1,10 +1,12 @@
 import './Navigation.css';
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-import Button from '../Button/Button.jsx';
+import {NavLink, useNavigate} from 'react-router-dom';
 import logo from '../../assets/National-Park-Service-Logo-1968.png';
 
+
 function Navigation() {
+    const navigate = useNavigate();
+
     return (
         <header className="header-img">
             <nav className="navigation-bar">
@@ -44,7 +46,7 @@ function Navigation() {
                     <li>
                         <button
                         type="button"
-                        // onClick={logout}
+                        onClick={() => navigate('/login')}
                         > Log in
                         </button>
                     </li>

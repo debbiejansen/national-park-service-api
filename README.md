@@ -13,7 +13,19 @@ The React Compiler is enabled on this template. See [this documentation](https:/
 
 Note: This will impact Vite dev & build performances.
 
-## Expanding the ESLint configuration
+## Applicatie starten
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# national-park-service-api
+Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de `node_modules` door het volgende
+commando in de terminal te runnen:
+
+```shell
+npm install
+```
+
+Wanneer dit klaar is, kun je de applicatie starten met behulp van:
+
+```shell
+npm run dev
+```
+
+of gebruik de WebStorm knop (npm run dev). Open http://localhost:5173 om de pagina in de browser te bekijken.# national-park-service-api
