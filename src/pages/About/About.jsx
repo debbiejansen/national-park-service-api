@@ -31,7 +31,10 @@ function About() {
                         by senior executives who manage national programs, policy, and budget in the Washington, DC,
                         headquarters and seven regional directors responsible for national park management and program
                         implementation.</p>
-                    <br/>
+                </div>
+
+                <div className="about-item">
+                    <h2>Our Employees</h2>
                     <p>Approximately 20,000 strong, the uncommon men and women of the National Park Service share a
                         common trait: a passion for caring for the nation's special places and sharing their
                         stories.</p>
