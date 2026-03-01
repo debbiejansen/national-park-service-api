@@ -1,7 +1,6 @@
 .page-container-faq {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
     box-sizing: border-box;
     height: auto;
     background-color: white;
@@ -10,6 +9,34 @@
 }
 
 .page-container-faq h2 {
-    align-self: center;
-    font-size: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ececec;
+    padding: 15px 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.arrow {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.open {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    margin-top: 10px;
+    color: #555;
+    line-height: 1.5;
 }
