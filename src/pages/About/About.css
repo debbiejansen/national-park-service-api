@@ -1,0 +1,19 @@
+.page-container-about {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 48px;
+    box-sizing: border-box;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.about-item {
+    border-bottom: 1px solid #ececec;
+    padding: 25px 0;
+}
+
+.about-item h2 {
+    margin-bottom: 20px;
+}
