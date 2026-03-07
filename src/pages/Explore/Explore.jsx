@@ -7,9 +7,15 @@ function Explore() {
     return (
         <>
             <div className="outer-container">
-                <div>
-                    Hier komt de filter balk
+                <div className="filter-bar-full">
+                   Filter
+                    <div className="filter-bar-options">
+                        Options
+                    <button>Search</button>
+                    </div>
                 </div>
+
+
                 <div className="page-container-explore">
 
                     <ExploreTile
