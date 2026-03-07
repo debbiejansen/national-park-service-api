@@ -5,13 +5,16 @@ import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import img from '../../assets/National-Park-Service-Logo-1968.png';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import BigTile from '../../components/BigTile/BigTile.jsx';
+import {useNavigate} from 'react-router-dom';
 
 function Home() {
+    const navigate = useNavigate();
+
     return (
             <div className="outer-container">
                 <WideButton
                     label="find a park"
-                    disabled="false"
+                    onClick={() => navigate('/explore')}
                 />
                 <section className="small-tiles-container">
                     <SmallTile
