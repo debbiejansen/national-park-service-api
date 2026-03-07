@@ -1,8 +1,6 @@
-button {
+.btn {
     border-radius: 6px;
     border: 1px solid transparent;
-    color: white;
-    background-color: #007553;
     font-size: 14px;
     font-weight: bolder;
     padding: 8px 24px;
@@ -10,6 +8,18 @@ button {
     transition: border-color 0.25s;
 }
 
-button:hover {
+.btn:hover {
     border-color: #f9f9f9;
+}
+
+/*!*<--------------->  1.1 Colour   <--------------->*!*/
+
+.btn-green {
+    background-color: var(--main-green);
+    color: white;
+}
+
+.btn-white {
+    background-color: white;
+    color: var(--main-black);
 }

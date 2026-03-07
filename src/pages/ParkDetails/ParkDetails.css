@@ -40,18 +40,6 @@
     margin-bottom: 24px;
 }
 
-.parkdetails-bar-full button {
-    border-radius: 6px;
-    border: 1px solid transparent;
-    background-color: var(--main-green);
-    color: white;
-    font-size: 14px;
-    font-weight: bolder;
-    padding: 8px 24px;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-
 .parkdetails-bar-options {
     display: flex;
     align-items: center;
