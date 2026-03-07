@@ -1,0 +1,70 @@
+/*!*<--------------->  1. PARKDETAILS INFO   <--------------->*!*/
+
+.page-container-parkdetails {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 48px;
+    box-sizing: border-box;
+    height: auto;
+}
+
+/*!*<--------------->  1.1 Image   <--------------->*!*/
+
+.parkdetails-park-image {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.parkdetails-park-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*!*<--------------->  1.2 Title & Buttons  <--------------->*!*/
+
+.parkdetails-bar-full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    height: 48px;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.parkdetails-bar-full button {
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: var(--main-green);
+    color: white;
+    font-size: 14px;
+    font-weight: bolder;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.parkdetails-bar-options {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.parkdetails-park-location {
+    font-style: italic;
+}
+
+.parkdetails-park-title {
+    font-weight: bolder;
+    font-size: 2.5rem;
+}
+
+/*!*<--------------->  1.3 Text   <--------------->*!*/

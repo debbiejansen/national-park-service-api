@@ -19,18 +19,21 @@ function Home() {
                         title="Naam van park"
                         discription="Info over park"
                         label="Popular"
+                        to="/parkdetails"
                     />
                     <SmallTile
                         image={img}
                         title="Naam van park"
                         discription="Info over park"
                         label="Local Wildlife"
+                        to="/parkdetails"
                     />
                     <SmallTile
                         image={img}
                         title="Naam van park"
                         discription="Info over park"
                         label="Beautiful Scenery"
+                        to="/parkdetails"
                     />
                 </section>
 
@@ -42,14 +45,14 @@ function Home() {
                         discription="Info over park"
                         image={parkimg}
                         imagePosition="right"
-                        to="/about"
+                        to="/parkdetails"
                         />
                     <BigTile
                         title="The park"
                         discription="Info over park"
                         image={parkimg}
                         imagePosition="left"
-                        to="/about"
+                        to="/parkdetails"
                     />
                 </div>
             </div>
