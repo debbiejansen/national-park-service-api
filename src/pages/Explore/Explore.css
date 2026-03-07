@@ -1,0 +1,31 @@
+.filter-bar-full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--main-green);
+    color: white;
+    font-weight: bold;
+    height: 48px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 24px;
+}
+
+.filter-bar-full button {
+    border-radius: 6px;
+    border: 1px solid transparent;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    font-weight: bolder;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.filter-bar-options {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
