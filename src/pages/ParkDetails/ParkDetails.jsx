@@ -1,6 +1,7 @@
 import './ParkDetails.css'
 import React from 'react';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
+import Button from '../../components/Button/Button.jsx';
 
 
 function ParkDetails() {
@@ -17,8 +18,19 @@ function ParkDetails() {
                 <div className="parkdetails-bar-full">
                     <p className="parkdetails-park-title">Titel van park</p>
                     <div className="parkdetails-bar-options">
-                        <button>Add to favorites</button>
-                        <button>Visited</button>
+                        <Button
+                            type="button"
+                            disabled="false"
+                            label="Add to favorites"
+                            // onClick={handleClick}
+                        />
+                        <Button
+                            type="button"
+                            disabled="false"
+                            label="Visited"
+                            // onClick={handleClick}
+                        />
+
                     </div>
                 </div>
 
