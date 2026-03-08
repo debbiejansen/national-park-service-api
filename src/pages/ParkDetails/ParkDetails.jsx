@@ -4,9 +4,6 @@ import Button from '../../components/Button/Button.jsx';
 import fallbackImg from '../../assets/scenic-view-landscape.jpg';
 import {useParams} from "react-router-dom";
 
-// API GOV:
-// XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi
-
 function ParkDetails() {
 
     const {id} = useParams();

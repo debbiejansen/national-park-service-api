@@ -14,7 +14,7 @@ function Explore() {
 
     // 2. LIFECYCLE: This runs once when the component "mounts"
     useEffect(() => {
-        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=10&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=15&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
 
         async function fetchParks() {
             try {

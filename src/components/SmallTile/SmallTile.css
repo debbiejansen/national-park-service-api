@@ -59,3 +59,7 @@ article span {
     font-weight: bolder;
     padding: 12px;
 }
+
+article li {
+    list-style: none;
+}
