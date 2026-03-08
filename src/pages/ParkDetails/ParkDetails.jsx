@@ -1,7 +1,7 @@
 import './ParkDetails.css'
 import React from 'react';
-import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import Button from '../../components/Button/Button.jsx';
+import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 
 
 function ParkDetails() {
@@ -13,10 +13,13 @@ function ParkDetails() {
                 </div>
 
                 <p className="parkdetails-park-location">locatie van het park</p>
-                {/*<h2>{props.title}</h2>*/}
+                {/*<p className="parkdetails-park-location">{props.addresses}</p>*/}
 
                 <div className="parkdetails-bar-full">
-                    <p className="parkdetails-park-title">Titel van park</p>
+                    <p className="parkdetails-park-title">
+                        Titel van park
+                        {/*<p className="parkdetails-park-title">{props.title}</p>*/}
+                    </p>
                     <div className="parkdetails-bar-options">
                         <Button
                             type="button"

@@ -40,7 +40,7 @@ function Home() {
                     />
                 </section>
 
-                <h2>Blog</h2>
+                <h2>Featured</h2>
 
                 <div className="big-tiles-container">
                     <BigTile
