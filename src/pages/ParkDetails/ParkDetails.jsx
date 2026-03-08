@@ -1,35 +1,70 @@
 import './ParkDetails.css'
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '../../components/Button/Button.jsx';
-import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
-
+import fallbackImg from '../../assets/scenic-view-landscape.jpg';
+import {useParams} from "react-router-dom";
 
 function ParkDetails() {
+
+    const {id} = useParams();
+    const [park, setPark] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+
+    useEffect(() => {
+        // Fetch juiste park data adhv de ID
+        async function fetchParkDetails() {
+            try {
+                const response = await fetch(
+                    `https://developer.nps.gov/api/v1/parks?parkCode=${id}&api_key=${API_KEY}`
+                );
+                const data = await response.json();
+
+                // hier returned de API een array, pak het eerste en enige resultaat
+                setPark(data.data[0]);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching park details", error);
+                setLoading(false);
+            }
+        }
+
+        fetchParkDetails();
+    }, [id]);
+
+    if (loading) return <div className="outer-container"><p>Loading details...</p></div>;
+    if (!park) return <div className="outer-container"><p>Park not found.</p></div>;
+
+
     return (
         <div className="outer-container">
             <main className="page-container-parkdetails">
                 <div className="parkdetails-park-image">
-                    <img src={parkimg} alt="park picture"/>
+                    <img
+                        src={park.images?.[0]?.url || fallbackImg}
+                        alt={park.fullName}
+                    />
                 </div>
 
-                <p className="parkdetails-park-location">locatie van het park</p>
-                {/*<p className="parkdetails-park-location">{props.addresses}</p>*/}
+                <p className="parkdetails-park-location">
+                    {park.states} - {park.addresses?.[0]?.city}
+                </p>
 
                 <div className="parkdetails-bar-full">
                     <p className="parkdetails-park-title">
-                        Titel van park
-                        {/*<p className="parkdetails-park-title">{props.title}</p>*/}
+                        {park.name}
                     </p>
                     <div className="parkdetails-bar-options">
                         <Button
                             type="button"
-                            disabled="false"
+                            disabled={false}
                             label="Add to favorites"
                             // onClick={handleClick}
                         />
                         <Button
                             type="button"
-                            disabled="false"
+                            disabled={false}
                             label="Visited"
                             // onClick={handleClick}
                         />
@@ -37,23 +72,20 @@ function ParkDetails() {
                     </div>
                 </div>
 
-                <p className="parkdetails-park-discription">
-                    {/*<p>{props.discription}</p>*/}
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
-                        unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                        explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                        qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
-                        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-                        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
-                        commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-                        nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                </p>
+                <div className="parkdetails-park-discription">
+                    <p>{park.description}</p>
+                    <br/>
+                    <h3>How to get there?</h3>
+                    <p className="parkdetails-park-discription">
+                        {park.directionsInfo}</p>
+                    <br />
+                    <h3>Activities:</h3>
+                    <ul className="parkdetails-activities-list">
+                        {park.activities?.slice(0, 5).map(act => (
+                            <li key={act.id}>{act.name}</li>
+                            ))}
+                    </ul>
+                </div>
             </main>
         </div>
     );

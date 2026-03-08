@@ -52,7 +52,12 @@
 
 .parkdetails-park-title {
     font-weight: bolder;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    line-height: 1.1;
 }
 
 /*!*<--------------->  1.3 Text   <--------------->*!*/
+
+.parkdetails-activities-list {
+    padding-left: 20px;
+}
