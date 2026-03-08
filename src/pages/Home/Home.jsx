@@ -2,27 +2,26 @@ import './Home.css'
 import React, {useEffect, useState} from 'react';
 import WideButton from '../../components/WideButton/WideButton.jsx';
 import SmallTile from '../../components/SmallTile/SmallTile.jsx';
-import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import BigTile from '../../components/BigTile/BigTile.jsx';
 import {useNavigate} from 'react-router-dom';
 import fallbackImg from "../../assets/scenic-view-landscape.jpg";
 
 function Home() {
 
-    // 1. STATE: This is the "memory" where the API data will live
     const [parks, setParks] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // 2. LIFECYCLE: This runs once when the component "mounts"
+    // Mounting
+    // Limit=[]&start=[]
     useEffect(() => {
-        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=3&start=5&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=5&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
 
         async function fetchParks() {
             try {
                 const response = await fetch(API_URL);
                 const data = await response.json();
 
-                // In the NPS API, the actual array is inside data.data
+                // Data staat in data.data
                 setParks(data.data || []);
                 setLoading(false);
             } catch (error) {
@@ -34,64 +33,47 @@ function Home() {
         fetchParks().catch(console.error);
     }, []);
 
-
-
     const navigate = useNavigate();
 
     return (
-            <div className="outer-container">
-                <WideButton
-                    label="find a park"
-                    onClick={() => navigate('/explore')}
-                />
-                <section className="small-tiles-container">
+        <div className="outer-container">
+            <WideButton
+                label="find a park"
+                onClick={() => navigate('/explore')}
+            />
+            <section className="small-tiles-container">
+                {loading ? <p>Loading parks...</p> :
+                    // Alleen de eerste 3 parken
+                    parks.slice(0, 3).map((park) => (
+                        <SmallTile
+                            key={park.id}
+                            image={park.images?.[0]?.url || fallbackImg}
+                            title={park.name}
+                            discription={park.description.substring(0, 35) + "..."}
+                            label={park.activities?.slice(0, 1).map(act => (
+                                <li key={act.id}>{act.name}</li>))}
+                            to={`/parkdetails/${park.parkCode}`}
+                        />
+                    ))
+                }
+            </section>
 
-                    {loading ? (
-                        <p>Loading the great outdoors...</p>
-                    ) : (
-                        parks.map((park) => (
+            <h2>Featured</h2>
 
-                    <SmallTile
-                        image={park.images?.[0]?.url || fallbackImg}
+            <div className="big-tiles-container">
+                {!loading && parks.slice(3, 5).map((park, index) => (
+                    <BigTile
                         key={park.id}
                         title={park.name}
-                        discription={park.description.substring(0, 35) + "..."}
-                        label={park.activities?.slice(0, 1).map(act => (
-                            <li key={act.id}>{act.name}</li>
-                        ))}
+                        discription={park.description.substring(0, 100) + "..."}
+                        image={park.images?.[0]?.url || fallbackImg}
+                        // Alternate image position based on index
+                        imagePosition={index % 2 === 0 ? "right" : "left"}
                         to={`/parkdetails/${park.parkCode}`}
                     />
-                        ))
-                    )}
-
-                    {/* Optional: Show this if the API returns 0 results */}
-                    {!loading && parks.length === 0 && (
-                        <p>No parks found. Try a different search!</p>
-                    )}
-
-
-
-                </section>
-
-                <h2>Featured</h2>
-
-                <div className="big-tiles-container">
-                    <BigTile
-                        title="The park"
-                        discription="Info over park"
-                        image={parkimg}
-                        imagePosition="right"
-                        to="/parkdetails"
-                        />
-                    <BigTile
-                        title="The park"
-                        discription="Info over park"
-                        image={parkimg}
-                        imagePosition="left"
-                        to="/parkdetails"
-                    />
-                </div>
+                ))}
             </div>
+        </div>
     );
 }
 
