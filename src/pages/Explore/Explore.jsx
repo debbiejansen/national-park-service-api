@@ -4,6 +4,10 @@ import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import ExploreTile from '../../components/ExploreTile/ExploreTile.jsx';
 import Button from '../../components/Button/Button.jsx';
 
+// props principe toe gaan passen
+// API GOV:
+// XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi
+
 function Explore() {
     return (
         <>
