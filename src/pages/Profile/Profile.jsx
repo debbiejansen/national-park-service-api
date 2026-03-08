@@ -16,10 +16,12 @@ function Profile() {
     const [parks, setParks] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+
     useEffect(() => {
 
         // Limit=[]&start=[]
-        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=5&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+        const API_URL = `https://developer.nps.gov/api/v1/parks?limit=5&api_key=${API_KEY}`;
 
         async function fetchParks() {
             try {
@@ -57,9 +59,8 @@ function Profile() {
                                 key={park.id}
                                 image={park.images?.[0]?.url || fallbackImg}
                                 title={park.name}
-                                discription={park.description.substring(0, 35) + "..."}
-                                label={park.activities?.slice(0, 1).map(act => (
-                                    <li key={act.id}>{act.name}</li>))}
+                                discription="Added to favorites. Click here for more info or to delete"
+                                label="♥︎"
                                 to={`/parkdetails/${park.parkCode}`}
                             />
                         ))

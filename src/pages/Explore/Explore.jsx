@@ -4,47 +4,101 @@ import fallbackImg from '../../assets/scenic-view-landscape.jpg';
 import ExploreTile from '../../components/ExploreTile/ExploreTile.jsx';
 import Button from '../../components/Button/Button.jsx';
 
-// API GOV:
-// XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi
-
 function Explore() {
-    // 1. STATE: This is the "memory" where the API data will live
+    // STATE
     const [parks, setParks] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-    // 2. LIFECYCLE: This runs once when the component "mounts"
-    useEffect(() => {
-        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=15&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+    // State voor dropdown menu
+    const [selectedState, setSelectedState] = useState("");
+    // State voor resultaten, start bij 0, + 15
+    const [start, setStart] = useState(0);
 
-        async function fetchParks() {
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
+    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
 
-                // In the NPS API, the actual array is inside data.data
+    const STATE_MAP = {
+        "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
+        "CO": "Colorado", "CT": "Connecticut", "DE": "Delaware", "FL": "Florida", "GA": "Georgia",
+        "HI": "Hawaii", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "IA": "Iowa",
+        "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "ME": "Maine", "MD": "Maryland",
+        "MA": "Massachusetts", "MI": "Michigan", "MN": "Minnesota", "MS": "Mississippi",
+        "MO": "Missouri", "MT": "Montana", "NE": "Nebraska", "NV": "Nevada", "NH": "New Hampshire",
+        "NJ": "New Jersey", "NM": "New Mexico", "NY": "New York", "NC": "North Carolina",
+        "ND": "North Dakota", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania",
+        "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee",
+        "TX": "Texas", "UT": "Utah", "VT": "Vermont", "VA": "Virginia", "WA": "Washington",
+        "WV": "West Virginia", "WI": "Wisconsin", "WY": "Wyoming"
+    };
+
+    // Fetch functie
+    async function fetchParks(isMore = false) {
+        setLoading(true);
+        const stateFilter = selectedState ? `&stateCode=${selectedState}` : "";
+        // filter per staat, toon alle resultaten,
+        // bij geen selectie worden gewoon de eerste 15 getoond
+        const limit = selectedState ? 465 : 15;
+        const currentStart = isMore ? start + 15 : 0;
+
+        // limit aanpassen van cijfer naar const
+        // filter meegeven in de URL in geval van keuze.
+        const API_URL = `https://developer.nps.gov/api/v1/parks?limit=${limit}&start=${currentStart}${stateFilter}&api_key=${API_KEY}`;
+
+        try {
+            const response = await fetch(API_URL);
+            const data = await response.json();
+
+            if (isMore) {
+                setParks(prev => [...prev, ...data.data]);
+                setStart(currentStart);
+            } else {
                 setParks(data.data || []);
-                setLoading(false);
-            } catch (error) {
-                console.error("Error fetching parks:", error);
-                setLoading(false);
+                setStart(0);
             }
+        } catch (error) {
+            console.error("Error fetching parks:", error);
+        } finally {
+            setLoading(false);
         }
+    }
 
-        fetchParks().catch(console.error);
-        }, []);
+    // Mounting
+    useEffect(() => {
+        fetchParks();
+        }, );
+
+        const handleSearch = () => {
+            fetchParks(false);
+        };
+
+        const handleLoadMore = () => {
+            fetchParks(true);
+        };
+
+
     return (
         <>
             <div className="outer-container">
                 <div className="filter-bar-full">
                    Filter
                     <div className="filter-bar-options">
-                        Options
+                        <select
+                            className="dropdown-filter"
+                            value={selectedState}
+                            onChange={(e) => setSelectedState(e.target.value)}
+                            >
+                            <option value="">Select a State</option>
+                            {Object.entries(STATE_MAP).map(([code, name]) => (
+                                <option key={code} value={code}>
+                                    {name}
+                                </option>
+                            ))}
+                        </select>
 
                         <Button
                         type="button"
                         disabled={false}
-                        label="Search"
-                        // onClick={}
+                        label={loading ? "Searching..." : "Search"}
+                        onClick={handleSearch}
                         variant="white"
                         />
                     </div>
@@ -52,26 +106,27 @@ function Explore() {
 
 
                 <div className="page-container-explore">
+                    {parks.map((park) => (
+                        <ExploreTile
+                            key={park.id}
+                            title={park.fullName}
+                            discription={park.description.substring(0, 100) + "..."}
+                            image={park.images?.[0]?.url || fallbackImg}
+                            to={`/parkdetails/${park.parkCode}`}
+                        />
+                    ))}
 
-                    {loading ? (
-                        <p>Loading the great outdoors...</p>
-                    ) : (
-                        parks.map((park) => (
-                            <ExploreTile
-                                key={park.id}
-                                title={park.fullName}
-                                discription={park.description.substring(0, 100) + "..."}
-                                image={park.images?.[0]?.url || fallbackImg}
-                                to={`/parkdetails/${park.parkCode}`}
+                    {loading && <p>Loading...</p>}
+
+                    {/* Show "Load More" only if no state is selected (initial view) */}
+                    {!selectedState && !loading && parks.length > 0 && (
+                        <div className="load-more-container">
+                            <Button
+                                label="Show more parks"
+                                onClick={handleLoadMore}
                             />
-                        ))
+                        </div>
                     )}
-
-                    {/* Optional: Show this if the API returns 0 results */}
-                    {!loading && parks.length === 0 && (
-                        <p>No parks found. Try a different search!</p>
-                    )}
-
                 </div>
             </div>
         </>
