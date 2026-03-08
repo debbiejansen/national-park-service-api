@@ -17,6 +17,8 @@ function Profile() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
+        // Limit=[]&start=[]
         const API_URL = "https://developer.nps.gov/api/v1/parks?limit=5&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
 
         async function fetchParks() {
@@ -41,7 +43,7 @@ function Profile() {
 
                 <ProfileInfo
                     title="Hello, it me"
-                    discription="Since 1916, the National Park Service has been entrusted with the care of our national parks. With the help of volunteers and partners, we safeguard these special places and share their stories with more than 318 million visitors every year. But our work doesn't stop there."
+                    description="Since 1916, the National Park Service has been entrusted with the care of our national parks. With the help of volunteers and partners, we safeguard these special places and share their stories with more than 318 million visitors every year. But our work doesn't stop there."
                     image={profile}
                 />
 

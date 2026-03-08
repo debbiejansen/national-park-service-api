@@ -11,10 +11,11 @@ function Home() {
     const [parks, setParks] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Mounting
-    // Limit=[]&start=[]
     useEffect(() => {
-        const API_URL = "https://developer.nps.gov/api/v1/parks?limit=5&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+
+        // Randomize de start voor verschillende parken per refresh. Anders: Limit=[]&start=[]
+        const randomStart = Math.floor(Math.random() * 450);
+        const API_URL = `https://developer.nps.gov/api/v1/parks?limit=5&start=${randomStart}&api_key=XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi`;
 
         async function fetchParks() {
             try {
