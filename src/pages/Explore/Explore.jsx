@@ -7,12 +7,9 @@ import Button from '../../components/Button/Button.jsx';
 function Explore() {
     // STATE
     const [parks, setParks] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    // State voor dropdown menu
+    const [loading, setLoading] = useState(false); // State voor dropdown menu
     const [selectedState, setSelectedState] = useState("");
-    // State voor resultaten, start bij 0, + 15
-    const [start, setStart] = useState(0);
+    const [start, setStart] = useState(0);  // State voor resultaten, start bij 0, + 15
 
     const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
 
@@ -33,11 +30,9 @@ function Explore() {
     // Fetch functie
     async function fetchParks(isMore = false) {
         setLoading(true);
-        const stateFilter = selectedState ? `&stateCode=${selectedState}` : "";
-        // filter per staat, toon alle resultaten,
-        // bij geen selectie worden gewoon de eerste 15 getoond
-        const limit = selectedState ? 465 : 15;
         const currentStart = isMore ? start + 15 : 0;
+        const stateFilter = selectedState ? `&stateCode=${selectedState}` : "";
+        const limit = selectedState ? 50 : 15; // limiet van NPS is standaard 50
 
         // limit aanpassen van cijfer naar const
         // filter meegeven in de URL in geval van keuze.
@@ -63,8 +58,8 @@ function Explore() {
 
     // Mounting
     useEffect(() => {
-        fetchParks();
-        }, );
+        fetchParks(false);
+    }, [selectedState]); // This triggers fetchParks whenever the state changes
 
         const handleSearch = () => {
             fetchParks(false);
@@ -73,6 +68,7 @@ function Explore() {
         const handleLoadMore = () => {
             fetchParks(true);
         };
+
 
 
     return (
@@ -110,7 +106,7 @@ function Explore() {
                         <ExploreTile
                             key={park.id}
                             title={park.fullName}
-                            discription={park.description.substring(0, 100) + "..."}
+                            description={park.description.substring(0, 100) + "..."}
                             image={park.images?.[0]?.url || fallbackImg}
                             to={`/parkdetails/${park.parkCode}`}
                         />
