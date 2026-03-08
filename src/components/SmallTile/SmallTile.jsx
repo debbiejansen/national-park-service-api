@@ -1,8 +1,10 @@
 import './SmallTile.css';
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 function SmallTile(props) {
     return (
+        <NavLink to={props.to} className="smalltile-link">
         <article className="article-outer-container">
             <span>{props.label}</span>
             <div className="article-image">
@@ -12,6 +14,7 @@ function SmallTile(props) {
             <p>{props.discription}</p>
             </div>
         </article>
+        </NavLink>
     );
 }
 export default SmallTile;

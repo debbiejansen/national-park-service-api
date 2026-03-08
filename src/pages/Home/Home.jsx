@@ -5,13 +5,16 @@ import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import img from '../../assets/National-Park-Service-Logo-1968.png';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import BigTile from '../../components/BigTile/BigTile.jsx';
+import {useNavigate} from 'react-router-dom';
 
 function Home() {
+    const navigate = useNavigate();
+
     return (
             <div className="outer-container">
                 <WideButton
                     label="find a park"
-                    disabled="false"
+                    onClick={() => navigate('/explore')}
                 />
                 <section className="small-tiles-container">
                     <SmallTile
@@ -19,22 +22,25 @@ function Home() {
                         title="Naam van park"
                         discription="Info over park"
                         label="Popular"
+                        to="/parkdetails"
                     />
                     <SmallTile
                         image={img}
                         title="Naam van park"
                         discription="Info over park"
                         label="Local Wildlife"
+                        to="/parkdetails"
                     />
                     <SmallTile
                         image={img}
                         title="Naam van park"
                         discription="Info over park"
                         label="Beautiful Scenery"
+                        to="/parkdetails"
                     />
                 </section>
 
-                <h2>Blog</h2>
+                <h2>Featured</h2>
 
                 <div className="big-tiles-container">
                     <BigTile
@@ -42,14 +48,14 @@ function Home() {
                         discription="Info over park"
                         image={parkimg}
                         imagePosition="right"
-                        to="/about"
+                        to="/parkdetails"
                         />
                     <BigTile
                         title="The park"
                         discription="Info over park"
                         image={parkimg}
                         imagePosition="left"
-                        to="/about"
+                        to="/parkdetails"
                     />
                 </div>
             </div>

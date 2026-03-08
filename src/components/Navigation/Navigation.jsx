@@ -2,6 +2,7 @@ import './Navigation.css';
 import React from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import logo from '../../assets/National-Park-Service-Logo-1968.png';
+import Button from '../Button/Button.jsx';
 
 
 function Navigation() {
@@ -44,11 +45,12 @@ function Navigation() {
 
 
                     <li>
-                        <button
-                        type="button"
-                        onClick={() => navigate('/login')}
-                        > Log in
-                        </button>
+                        <Button
+                            type="button"
+                            disabled={false}
+                            label="Log in"
+                            onClick={() => navigate('/login')}
+                        />
                     </li>
                 </ul>
             </nav>

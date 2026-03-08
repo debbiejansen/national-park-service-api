@@ -2,6 +2,7 @@ import './Explore.css'
 import React from 'react';
 import parkimg from '../../assets/matthew-smith-Rfflri94rs8-unsplash.jpg';
 import ExploreTile from '../../components/ExploreTile/ExploreTile.jsx';
+import Button from '../../components/Button/Button.jsx';
 
 function Explore() {
     return (
@@ -11,7 +12,14 @@ function Explore() {
                    Filter
                     <div className="filter-bar-options">
                         Options
-                    <button>Search</button>
+
+                        <Button
+                        type="button"
+                        disabled={false}
+                        label="Search"
+                        // onClick={}
+                        variant="white"
+                        />
                     </div>
                 </div>
 
@@ -22,21 +30,21 @@ function Explore() {
                         title="Andere naam van een park"
                         discription="Info over park om te testen of dit werkt"
                         image={parkimg}
-                        to="/about"
+                        to="/parkdetails"
                     />
 
                     <ExploreTile
                         title="Andere naam van een park 2"
                         discription="Info over park om te testen of dit werkt 2"
                         image={parkimg}
-                        to="/about"
+                        to="/parkdetails"
                     />
 
                     <ExploreTile
                         title="Andere naam van een park 3"
                         discription="Info over park om te testen of dit werkt 3"
                         image={parkimg}
-                        to="/about"
+                        to="/parkdetails"
                     />
 
                 </div>
