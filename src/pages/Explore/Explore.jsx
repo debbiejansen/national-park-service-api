@@ -62,7 +62,7 @@ function Explore() {
                                 title={park.fullName}
                                 discription={park.description.substring(0, 100) + "..."}
                                 image={park.images?.[0]?.url || fallbackImg}
-                                to={`/parkdetails/${park.id}`}
+                                to={`/parkdetails/${park.parkCode}`}
                             />
                         ))
                     )}
