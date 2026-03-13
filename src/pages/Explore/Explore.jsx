@@ -1,6 +1,6 @@
 import './Explore.css'
 import React, {useEffect, useState} from 'react';
-import fallbackImg from '../../assets/scenic-view-landscape.jpg';
+import fallbackImg from '../../assets/fallbackImg.jpg';
 import ExploreTile from '../../components/ExploreTile/ExploreTile.jsx';
 import Button from '../../components/Button/Button.jsx';
 

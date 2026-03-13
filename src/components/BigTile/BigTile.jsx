@@ -13,7 +13,7 @@ function BigTile(props) {
         <article className={`bigtile-outer-container ${layoutClass}`}>
             <div className="bigtile-text">
                 <h2>{props.title}</h2>
-                <p>{props.discription}</p>
+                <p>{props.description}</p>
             </div>
             <div className="bigtile-image">
                 <img src={props.image} alt={props.title}/>

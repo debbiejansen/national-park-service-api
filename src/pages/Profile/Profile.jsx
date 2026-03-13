@@ -4,7 +4,7 @@ import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import BigTile from '../../components/BigTile/BigTile.jsx';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 import profile from '../../assets/SS_profile-test.png';
-import fallbackImg from "../../assets/scenic-view-landscape.jpg";
+import fallbackImg from '../../assets/fallbackImg.jpg';
 
 // Foto Nova van novi
 // https://info.novi.nl/hs-fs/hubfs/MicrosoftTeams-image-Aug-18-2023-11-38-12-7024-AM.png?width=400&height=300&name=MicrosoftTeams-image-Aug-18-2023-11-38-12-7024-AM.png
@@ -23,7 +23,7 @@ function Profile() {
 
     useEffect(() => {
         // Limit=[]&start=[] - bijv /parks?limit=5&start=3&api_key=${API_KEY}`
-        const API_URL = `https://developer.nps.gov/api/v1/parks?limit=5&api_key=${API_KEY}`;
+        const API_URL = `https://developer.nps.gov/api/v1/parks?&api_key=${API_KEY}`;
 
         const savedFavorites = JSON.parse(localStorage.getItem('faveParks')) || [];
         setFavorites(savedFavorites);
@@ -59,36 +59,41 @@ function Profile() {
                 <h2>Favorites</h2>
 
                 <section className="small-tiles-container">
-                    {loading ? <p>Loading the great outdoors...</p> :
-                        // Alleen de eerste 3 parken
-                        parks.slice(0, 3).map((park) => (
+                    {favorites.length > 0 ? (
+                        favorites.map((park) => (
                             <SmallTile
                                 key={park.id}
-                                image={park.images?.[0]?.url || fallbackImg}
+                                image={park.image || fallbackImg}
                                 title={park.name}
-                                discription="Added to favorites. Click here for more info or to delete"
+                                discription="Added to favorites. Click for more info or to delete"
                                 label="♥︎"
                                 to={`/parkdetails/${park.parkCode}`}
                             />
                         ))
-                    }
-                </section>
+                    ) : (
+                        <p>No parks in your favorites yet</p>
+                    )}
+                    </section>
 
                 <h2>Visited</h2>
 
                 <div className="big-tiles-container">
-                    {!loading && parks.slice(3, 5).map((park, index) => (
-                        <BigTile
-                            key={park.id}
-                            title={park.name}
-                            discription={park.description.substring(0, 100) + "..."}
-                            image={park.images?.[0]?.url || fallbackImg}
-                            // Wisselen van waar de afbeelding staat
-                            imagePosition={index % 2 === 0 ? "right" : "left"}
-                            to={`/parkdetails/${park.parkCode}`}
-                        />
-                    ))}
-                </div>
+                    {visited.length > 0 ? (
+                        visited.map((park, index) => (
+                            <BigTile
+                                key={park.id}
+                                title={park.name}
+                                description={park.description ? park.description.substring(0, 100) + "..." : "No description available"}
+                                image={park.image || fallbackImg}
+                                // Wisselen van waar de afbeelding staat
+                                imagePosition={index % 2 === 0 ? "right" : "left"}
+                                to={`/parkdetails/${park.parkCode}`}
+                            />
+                        ))
+                    ) : (
+                        <p>You have not visited any parks yet</p>
+                    )}
+                    </div>
             </div>
         </>
     );

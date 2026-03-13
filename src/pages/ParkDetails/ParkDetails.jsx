@@ -1,8 +1,8 @@
 import './ParkDetails.css'
 import React, {useEffect, useState} from 'react';
 import Button from '../../components/Button/Button.jsx';
-import fallbackImg from '../../assets/scenic-view-landscape.jpg';
-import {useParams} from "react-router-dom";
+import fallbackImg from '../../assets/fallbackImg.jpg';
+import {useParams} from 'react-router-dom';
 
 function ParkDetails() {
     const {id} = useParams();
@@ -31,9 +31,13 @@ function ParkDetails() {
                 setLoading(false);
             }
 
-            const savedFavorites = JSON.parse(localStorage.getItem('faveparks')) || [];
+            const savedFavorites = JSON.parse(localStorage.getItem('faveParks')) || [];
             const exists = savedFavorites.some(p => p.parkCode === id);
             setIsFavorite(exists);
+
+            const savedVisited = JSON.parse(localStorage.getItem('visitedParks')) || [];
+            const existsVisited = savedVisited.some(p => p.parkCode === id);
+            setIsVisited(existsVisited);
         }
 
         fetchParkDetails();
@@ -50,10 +54,11 @@ function ParkDetails() {
                 id: park.id,
                 parkCode: park.parkCode,
                 name: park.name,
-                image: park.images?.[0]?.url
+                image: park.images?.[0]?.url,
+                description: park.description
             };
-            savedFavorites.push(parkToSave);
-            localStorage.setItem('faveParks', JSON.stringify(savedFavorites));
+            const updated = [...savedFavorites, parkToSave];
+            localStorage.setItem('faveParks', JSON.stringify(updated));
             setIsFavorite(true);
         }
     };
@@ -69,7 +74,8 @@ function ParkDetails() {
                 id: park.id,
                 parkCode: park.parkCode,
                 name: park.name,
-                image: park.images?.[0]?.url
+                image: park.images?.[0]?.url,
+                description: park.description
             };
             savedVisited.push(parkToSaveVisited);
             localStorage.setItem('visitedParks', JSON.stringify(savedVisited));

@@ -4,7 +4,7 @@ import WideButton from '../../components/WideButton/WideButton.jsx';
 import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import BigTile from '../../components/BigTile/BigTile.jsx';
 import {useNavigate} from 'react-router-dom';
-import fallbackImg from "../../assets/scenic-view-landscape.jpg";
+import fallbackImg from '../../assets/fallbackImg.jpg';
 
 function Home() {
 
