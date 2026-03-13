@@ -1,29 +1,36 @@
 import './Profile.css'
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SmallTile from '../../components/SmallTile/SmallTile.jsx';
 import BigTile from '../../components/BigTile/BigTile.jsx';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 import profile from '../../assets/SS_profile-test.png';
 import fallbackImg from '../../assets/fallbackImg.jpg';
 
-// Foto Nova van novi
-// https://info.novi.nl/hs-fs/hubfs/MicrosoftTeams-image-Aug-18-2023-11-38-12-7024-AM.png?width=400&height=300&name=MicrosoftTeams-image-Aug-18-2023-11-38-12-7024-AM.png
-// https://avatars.githubusercontent.com/u/32450174?v=4
-// Foto Nova van Github
-
 function Profile() {
 
     const [parks, setParks] = useState([]);
     const [loading, setLoading] = useState(true);
-    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
-
     // ophalen van favorieten en bezocht
     const [favorites, setFavorites] = useState([]);
     const [visited, setVisited] = useState([]);
+    // scrollbar bij favorites
+    const scrollRef = useRef(null);
+    // API key NPS
+    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+
+// Scrollbar
+    const scroll = (direction) => {
+        const {current} = scrollRef;
+        const scrollAmount = 320;
+
+        if (direction === 'left') {
+            current.scrollLeft -= scrollAmount;
+        } else {
+            current.scrollLeft += scrollAmount;
+        }
+    };
 
     useEffect(() => {
-        // Limit=[]&start=[] - bijv /parks?limit=5&start=3&api_key=${API_KEY}`
-        const API_URL = `https://developer.nps.gov/api/v1/parks?&api_key=${API_KEY}`;
 
         const savedFavorites = JSON.parse(localStorage.getItem('faveParks')) || [];
         setFavorites(savedFavorites);
@@ -32,18 +39,18 @@ function Profile() {
 
         async function fetchParks() {
             try {
+                const API_URL = `https://developer.nps.gov/api/v1/parks?&api_key=${API_KEY}`;
                 const response = await fetch(API_URL);
                 const data = await response.json();
-
                 setParks(data.data || []);
-                setLoading(false);
             } catch (error) {
                 console.error("Error fetching parks:", error);
+            } finally {
                 setLoading(false);
             }
         }
 
-        fetchParks().catch(console.error);
+        fetchParks();
     }, []);
 
     return (
@@ -57,23 +64,27 @@ function Profile() {
                 />
 
                 <h2>Favorites</h2>
+                <div className="favorites-wrapper">
+                    <button className="scroll-button" onClick={() => scroll('left')}> ‹</button>
 
-                <section className="small-tiles-container">
-                    {favorites.length > 0 ? (
-                        favorites.map((park) => (
-                            <SmallTile
-                                key={park.id}
-                                image={park.image || fallbackImg}
-                                title={park.name}
-                                discription="Added to favorites. Click for more info or to delete"
-                                label="♥︎"
-                                to={`/parkdetails/${park.parkCode}`}
-                            />
-                        ))
-                    ) : (
-                        <p>No parks in your favorites yet</p>
-                    )}
+                    <section className="small-tiles-container" ref={scrollRef}>
+                        {favorites.length > 0 ? (
+                            favorites.map((park) => (
+                                <SmallTile
+                                    key={park.id}
+                                    image={park.image || fallbackImg}
+                                    title={park.name}
+                                    description="Added to favorites. Click for more info or to delete"
+                                    label="♥︎"
+                                    to={`/parkdetails/${park.parkCode}`}
+                                />
+                            ))
+                        ) : (
+                            <p>No parks in your favorites yet</p>
+                        )}
                     </section>
+                    <button className="scroll-button" onClick={() => scroll('right')}> ›</button>
+                </div>
 
                 <h2>Visited</h2>
 
@@ -93,7 +104,7 @@ function Profile() {
                     ) : (
                         <p>You have not visited any parks yet</p>
                     )}
-                    </div>
+                </div>
             </div>
         </>
     );

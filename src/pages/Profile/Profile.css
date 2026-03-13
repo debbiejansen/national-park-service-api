@@ -1,0 +1,30 @@
+/*!*<--------------->  1.Wrapper voor horizontale scrollbar   <--------------->*!*/
+.favorites-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 960px; /* (300px tile + margins) * 3 */
+    margin: 0 auto;
+}
+
+/*!*<--------------->  1.1 De scrollbar   <--------------->*!*/
+.small-tiles-container {
+    display: flex;
+    overflow-x: hidden; /* Hide the scrollbar */
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+/*!*<--------------->  1.2 Arrow buttons voor scrollbar   <--------------->*!*/
+.scroll-button {
+    background: var(--main-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    margin: 5px;
+}

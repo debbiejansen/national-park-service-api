@@ -30,7 +30,7 @@ function Faq() {
             />
             <FaqItem
                 question="Where can I find parks I have added to my favorites?"
-                answer="You can find all parks you have favourited in your personal account under 'profile'. You need to be logged in to see these. You need to be logged in to see these. Your personal account can be found under 'profile'."
+                answer="You can find all parks you have favourited in your personal account. You need to be logged in to see these. Your personal account can be found under 'profile'."
             />
             <FaqItem
                 question="Where can I find parks I have added to my visited overview?"

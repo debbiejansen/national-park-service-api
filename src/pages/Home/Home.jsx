@@ -52,7 +52,7 @@ function Home() {
                             key={park.id}
                             image={park.images?.[0]?.url || fallbackImg}
                             title={park.name}
-                            discription={park.description.substring(0, 40) + "..."}
+                            description={park.description.substring(0, 40) + "..."}
                             label={park.activities?.slice(0, 1).map(act => (
                                 <li key={act.id}>{act.name}</li>))}
                             to={`/parkdetails/${park.parkCode}`}
@@ -68,7 +68,7 @@ function Home() {
                     <BigTile
                         key={park.id}
                         title={park.name}
-                        discription={park.description.substring(0, 100) + "..."}
+                        description={park.description.substring(0, 100) + "..."}
                         image={park.images?.[0]?.url || fallbackImg}
                         // Alternate image position based on index
                         imagePosition={index % 2 === 0 ? "right" : "left"}
