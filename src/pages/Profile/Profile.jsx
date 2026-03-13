@@ -15,13 +15,20 @@ function Profile() {
 
     const [parks, setParks] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
 
-    useEffect(() => {
+    // ophalen van favorieten en bezocht
+    const [favorites, setFavorites] = useState([]);
+    const [visited, setVisited] = useState([]);
 
-        // Limit=[]&start=[]
+    useEffect(() => {
+        // Limit=[]&start=[] - bijv /parks?limit=5&start=3&api_key=${API_KEY}`
         const API_URL = `https://developer.nps.gov/api/v1/parks?limit=5&api_key=${API_KEY}`;
+
+        const savedFavorites = JSON.parse(localStorage.getItem('faveParks')) || [];
+        setFavorites(savedFavorites);
+        const savedVisited = JSON.parse(localStorage.getItem('visitedParks')) || [];
+        setVisited(savedVisited);
 
         async function fetchParks() {
             try {
@@ -76,7 +83,7 @@ function Profile() {
                             title={park.name}
                             discription={park.description.substring(0, 100) + "..."}
                             image={park.images?.[0]?.url || fallbackImg}
-                            // Alternate image position based on index
+                            // Wisselen van waar de afbeelding staat
                             imagePosition={index % 2 === 0 ? "right" : "left"}
                             to={`/parkdetails/${park.parkCode}`}
                         />

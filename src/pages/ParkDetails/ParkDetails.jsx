@@ -5,12 +5,14 @@ import fallbackImg from '../../assets/scenic-view-landscape.jpg';
 import {useParams} from "react-router-dom";
 
 function ParkDetails() {
-
     const {id} = useParams();
     const [park, setPark] = useState(null);
     const [loading, setLoading] = useState(true);
-
     const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+
+    // Toevoegen aan favorieten & bezocht
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [isVisited, setIsVisited] = useState(false);
 
     useEffect(() => {
         // Fetch juiste park data adhv de ID
@@ -28,14 +30,55 @@ function ParkDetails() {
                 console.error("Error fetching park details", error);
                 setLoading(false);
             }
+
+            const savedFavorites = JSON.parse(localStorage.getItem('faveparks')) || [];
+            const exists = savedFavorites.some(p => p.parkCode === id);
+            setIsFavorite(exists);
         }
 
         fetchParkDetails();
     }, [id]);
 
+    const toggleFavorite = () => {
+        const savedFavorites = JSON.parse(localStorage.getItem('faveParks')) || [];
+        if (isFavorite) {
+            const updatedFavorites = savedFavorites.filter(p => p.parkCode !== id);
+            localStorage.setItem('faveParks',JSON.stringify(updatedFavorites));
+            setIsFavorite(false);
+        } else {
+            const parkToSave = {
+                id: park.id,
+                parkCode: park.parkCode,
+                name: park.name,
+                image: park.images?.[0]?.url
+            };
+            savedFavorites.push(parkToSave);
+            localStorage.setItem('faveParks', JSON.stringify(savedFavorites));
+            setIsFavorite(true);
+        }
+    };
+
+    const toggleVisited = () => {
+        const savedVisited = JSON.parse(localStorage.getItem('visitedParks')) || [];
+        if (isVisited) {
+            const updatedVisited = savedVisited.filter(p => p.parkCode !== id);
+            localStorage.setItem('visitedParks', JSON.stringify(updatedVisited));
+            setIsVisited(false);
+        } else {
+            const parkToSaveVisited = {
+                id: park.id,
+                parkCode: park.parkCode,
+                name: park.name,
+                image: park.images?.[0]?.url
+            };
+            savedVisited.push(parkToSaveVisited);
+            localStorage.setItem('visitedParks', JSON.stringify(savedVisited));
+            setIsVisited(true);
+        }
+    };
+
     if (loading) return <div className="outer-container"><p>Loading details...</p></div>;
     if (!park) return <div className="outer-container"><p>Park not found.</p></div>;
-
 
     return (
         <div className="outer-container">
@@ -59,14 +102,14 @@ function ParkDetails() {
                         <Button
                             type="button"
                             disabled={false}
-                            label="Add to favorites"
-                            // onClick={handleClick}
+                            label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                            onClick={toggleFavorite}
                         />
                         <Button
                             type="button"
                             disabled={false}
-                            label="Visited"
-                            // onClick={handleClick}
+                            label={isVisited ? "Remove from visited" : "Visited"}
+                            onClick={toggleVisited}
                         />
 
                     </div>
