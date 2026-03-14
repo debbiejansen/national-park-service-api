@@ -30,6 +30,20 @@ function Profile() {
         }
     };
 
+    // Remove from favorites via label
+    const handleRemoveFavorite = (e, parkId) => {
+        // This stops the click from triggering the NavLink
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Filter the list
+        const updatedFavorites = favorites.filter(park => park.id !== parkId);
+
+        // Update State and LocalStorage
+        setFavorites(updatedFavorites);
+        localStorage.setItem('faveParks', JSON.stringify(updatedFavorites));
+    };
+
     useEffect(() => {
 
         const savedFavorites = JSON.parse(localStorage.getItem('faveParks')) || [];
@@ -74,9 +88,14 @@ function Profile() {
                                     key={park.id}
                                     image={park.image || fallbackImg}
                                     title={park.name}
-                                    description="Added to favorites. Click for more info or to delete"
+                                    description="Added to favorites. Click ♥︎ to remove"
                                     label="♥︎"
                                     to={`/parkdetails/${park.parkCode}`}
+                                    onClickLabel={() => {
+                                        const updated = favorites.filter(f => f.id !== park.id);
+                                        setFavorites(updated);
+                                        localStorage.setItem('faveParks', JSON.stringify(updated));
+                                    }}
                                 />
                             ))
                         ) : (
