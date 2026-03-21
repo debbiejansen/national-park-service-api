@@ -11,7 +11,7 @@ function ProfileInfo(props) {
 
             <div className="profile-info-text">
                 <h1>{props.title}</h1>
-                <p>{props.discription}</p>
+                <p>{props.description}</p>
             </div>
 
         </div>

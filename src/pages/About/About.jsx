@@ -9,7 +9,7 @@ function About() {
 
             <ProfileInfo
                 title="National Park Service"
-                discription="Since 1916, the National Park Service has been entrusted with the care of our national parks. With the help of volunteers and partners, we safeguard these special places and share their stories with more than 318 million visitors every year. But our work doesn't stop there.
+                description="Since 1916, the National Park Service has been entrusted with the care of our national parks. With the help of volunteers and partners, we safeguard these special places and share their stories with more than 318 million visitors every year. But our work doesn't stop there.
                 Taking care of the national parks and helping Americans take care of their communities is a job we love, and we need—and welcome—your help and support."
                 image={npsLogoBig}
             />

@@ -4,7 +4,6 @@ import {AuthContext} from '../../context/AuthContext.jsx';
 import axios from 'axios';
 import WideButton from '../../components/WideButton/WideButton.jsx';
 
-
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,8 +15,7 @@ function Login() {
         toggleError(false);
 
         try {
-            // Hier nog linken naar de Novi API voor inloggen - localhost klopt niet
-            const result = await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/login', {
+            const result = await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/login?projectId=1a3cf68c-7efb-4295-a36a-681e9ea8ee2b', {
                 email: email,
                 password: password,
                 });
@@ -25,9 +23,9 @@ function Login() {
             console.log(result.data);
 
             // geef de JWT token aan de login-functie van de context mee
-            login(result.data.accesToken);
+            login(result.data.token);
         } catch (e) {
-            console.error(e);
+            console.error("Login failed", e);
             toggleError(true);
         }
     }

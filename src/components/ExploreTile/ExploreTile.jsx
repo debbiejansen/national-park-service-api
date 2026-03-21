@@ -9,7 +9,7 @@ function ExploreTile(props) {
             <article className="exploretile-outer-container">
                 <div className="exploretile-text">
                     <h2>{props.title}</h2>
-                    <p>{props.discription}</p>
+                    <p>{props.description}</p>
                 </div>
                 <div className="exploretile-image">
                     <img src={props.image} alt={props.title}/>
