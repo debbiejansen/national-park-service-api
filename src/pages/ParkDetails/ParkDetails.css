@@ -61,3 +61,26 @@
 .parkdetails-activities-list {
     padding-left: 20px;
 }
+
+/*!*<--------------->  2.0 TOOLTIP   <--------------->*!*/
+
+.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    position: absolute;
+    bottom: 120%; /* Net boven de knop */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+

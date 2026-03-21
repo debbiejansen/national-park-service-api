@@ -114,7 +114,6 @@ function Explore() {
 
                     {loading && <p>Loading...</p>}
 
-                    {/* Show "Load More" only if no state is selected (initial view) */}
                     {!selectedState && !loading && parks.length > 0 && (
                         <div className="load-more-container">
                             <Button

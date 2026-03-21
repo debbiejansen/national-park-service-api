@@ -21,7 +21,8 @@ function AuthContextProvider( { children } ) {
         // als er WEL een token is, haal dan opnieuw de gebruikersdata op
         if (token) {
             const decoded = jwtDecode(token);
-            void fetchUserData( decoded.sub, token);
+            console.log("DIT ZIT ER IN JE TOKEN BIJ REFRESH:", decoded); // <--- Kijk hier in je console!
+            void fetchUserData( decoded.userId, token);
         } else {
             // als er GEEN token is doen we niks, en zetten we de status op 'done'
             toggleIsAuth({
@@ -37,11 +38,12 @@ function AuthContextProvider( { children } ) {
         localStorage.setItem('token', JWT);
         // decode de token zodat we de ID van de gebruiker hebben en data kunnen ophalen voor de context
         const decoded = jwtDecode(JWT);
-
+        console.log(decoded);
+        console.log("inside login")
         // geef de ID, token en redirect-link mee aan de fetchUserData functie
-        void fetchUserData(decoded.sub, JWT, '/profile');
+        void fetchUserData(decoded.userId, JWT, '/profile');
         // link de gebruiker door naar de profielpagina
-        // navigate('/profile')
+        //navigate('/profile')
     }
 
     function logout() {
@@ -55,13 +57,14 @@ function AuthContextProvider( { children } ) {
         navigate('/');
     }
  // omdat we de functie in login- en het mounting effect gebruiken, staat hij hier
-    async function fetchUserData( id, token, redirectUrl) {
+    async function fetchUserData( id, token, redirectUrl ) {
         try {
+            console.log(id);
             // haal gebruikersdata op met de token en id van de gebruiker
-            const result = await axios.get('http://localhost:8080', {
+            const result = await axios.get(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: 'Bearer ${ token }',
+                    Authorization: `Bearer ${token}`,
                 },
             });
 
@@ -70,12 +73,16 @@ function AuthContextProvider( { children } ) {
                 ...isAuth,
                 isAuth: true,
                 user: {
-                    username: result.data.username,
+                    //username: result.data.username,
                     email: result.data.email,
                     id: result.data.id,
+                    //name: result.data.name,
+                    //description: result.data.description,
                 },
                 status: 'done',
             });
+
+            console.log("done with toggle");
 
             // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernaar toe
             // als we de history.push in de login functie zouden zetten, linken we al door voor de gebruiker is opgehaald

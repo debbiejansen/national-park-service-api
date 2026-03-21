@@ -1,11 +1,13 @@
 import './Navigation.css';
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import logo from '../../assets/National-Park-Service-Logo-1968.png';
 import Button from '../Button/Button.jsx';
+import {AuthContext} from '../../context/AuthContext.jsx';
 
 
 function Navigation() {
+    const { isAuth, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     return (
@@ -43,15 +45,25 @@ function Navigation() {
                         </NavLink>
                     </li>
 
-
-                    <li>
-                        <Button
+                    {isAuth ?
+                        <li>
+                            <Button
+                                type="button"
+                                disabled={false}
+                                label="Log out"
+                                onClick={logout}
+                            />
+                        </li>
+                        :
+                        <li>
+                          <Button
                             type="button"
                             disabled={false}
                             label="Log in"
                             onClick={() => navigate('/login')}
                         />
                     </li>
+                        }
                 </ul>
             </nav>
         </header>

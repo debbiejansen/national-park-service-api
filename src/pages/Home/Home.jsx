@@ -51,7 +51,11 @@ function Home() {
                         <SmallTile
                             key={park.id}
                             image={park.images?.[0]?.url || fallbackImg}
-                            title={park.name}
+                            title={
+                                park.name.length > 35
+                                    ? park.name.substring(0, 32) + "..."
+                                    : park.name
+                            }
                             description={park.description.substring(0, 40) + "..."}
                             label={park.activities?.slice(0, 1).map(act => (
                                 <li key={act.id}>{act.name}</li>))}
