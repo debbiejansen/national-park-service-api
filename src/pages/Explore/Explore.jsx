@@ -11,7 +11,7 @@ function Explore() {
     const [selectedState, setSelectedState] = useState("");
     const [start, setStart] = useState(0);  // State voor resultaten, start bij 0, + 15
 
-    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+    const NPS_API_KEY = import.meta.env.VITE_NPS_API_KEY;
 
     const STATE_MAP = {
         "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
@@ -36,7 +36,7 @@ function Explore() {
 
         // limit aanpassen van cijfer naar const
         // filter meegeven in de URL in geval van keuze.
-        const API_URL = `https://developer.nps.gov/api/v1/parks?limit=${limit}&start=${currentStart}${stateFilter}&api_key=${API_KEY}`;
+        const API_URL = `https://developer.nps.gov/api/v1/parks?limit=${limit}&start=${currentStart}${stateFilter}&api_key=${NPS_API_KEY}`;
 
         try {
             const response = await fetch(API_URL);

@@ -9,13 +9,14 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, toggleError] = useState(false);
     const {login} = useContext(AuthContext);
+    const NOVI_API_KEY = import.meta.env.VITE_NOVI_API_KEY;
 
     async function handleSubmit(e) {
         e.preventDefault();
         toggleError(false);
 
         try {
-            const result = await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/login?projectId=1a3cf68c-7efb-4295-a36a-681e9ea8ee2b', {
+            const result = await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/login?projectId='+NOVI_API_KEY, {
                 email: email,
                 password: password,
                 });

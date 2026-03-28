@@ -19,7 +19,7 @@ function Profile() {
     const profileName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
 
 
-    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";     // API key NPS
+    const NPS_API_KEY = import.meta.env.VITE_NPS_API_KEY;
     const BASE_URL = "https://novi-backend-api-wgsgz.ondigitalocean.app/api";
 
 // Scrollbar
@@ -33,9 +33,10 @@ function Profile() {
             current.scrollLeft += scrollAmount;
         }
     };
+    const NOVI_API_KEY = import.meta.env.VITE_NOVI_API_KEY;
 
     const headers = {
-        'novi-education-project-id': '1a3cf68c-7efb-4295-a36a-681e9ea8ee2b',
+        'novi-education-project-id': NOVI_API_KEY,
         'accept': '*/*'
     };
 
@@ -59,7 +60,7 @@ function Profile() {
                 const allCodesString = Array.from(allCodesSet).join(',');
                 if (allCodesString) {
                     // 3. Fetch van de NPS API dmv de joined string
-                    const npsResponse = await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${allCodesString}&api_key=${API_KEY}`);
+                    const npsResponse = await axios.get(`https://developer.nps.gov/api/v1/parks?parkCode=${allCodesString}&api_key=${NPS_API_KEY}`);
                     const npsData = npsResponse.data.data;
 
                     // 4. Filter de resultaten terug in de State variabelen

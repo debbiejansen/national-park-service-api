@@ -17,12 +17,13 @@ function ParkDetails() {
     const [visitedEntryId, setVisitedEntryId] = useState(null);
     const [showTooltip, setShowTooltip] = useState(false);
 
-    const API_KEY = "XDmzaFo0GOhc6aztJdJbxmZ6bB5eGsDVGkxowKAi";
+    const NPS_API_KEY = import.meta.env.VITE_NPS_API_KEY;
     const BASE_URL = "https://novi-backend-api-wgsgz.ondigitalocean.app/api";
+    const NOVI_API_KEY = import.meta.env.VITE_NOVI_API_KEY;
 
     // Centralized headers
     const headers = {
-        'novi-education-project-id': '1a3cf68c-7efb-4295-a36a-681e9ea8ee2b',
+        'novi-education-project-id': NOVI_API_KEY,
         'accept': '*/*'
     };
 
@@ -32,7 +33,7 @@ function ParkDetails() {
                 setLoading(true);
                 // 1. Fetch NPS data
                 const npsResponse = await axios.get(
-                    `https://developer.nps.gov/api/v1/parks?parkCode=${id}&api_key=${API_KEY}`
+                    `https://developer.nps.gov/api/v1/parks?parkCode=${id}&api_key=${NPS_API_KEY}`
                 );
                 const currentPark = npsResponse.data.data[0];
                 setPark(currentPark);
